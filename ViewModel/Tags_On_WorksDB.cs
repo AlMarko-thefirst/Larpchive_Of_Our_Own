@@ -50,7 +50,18 @@ namespace ViewModel
 
         protected override void CreateUpdatedSQL(BaseEntity entity, OleDbCommand cmd)
         {
-            throw new NotImplementedException();
+            Tags_On_Works tow = entity as Tags_On_Works;
+            if (tow != null)
+            {
+                string sqlStr = "UPDATE Tags_On_Works SET [Work_Id]=@towWid, [Tags]=@towT WHERE ID=@ID";
+
+                command.CommandText = sqlStr;
+
+                command.Parameters.Add(new OleDbParameter("@towWid", tow.WorkId.Id));
+                command.Parameters.Add(new OleDbParameter("@towT", tow.WorkTags.Id));
+                command.Parameters.Add(new OleDbParameter("@ID", tow.Id));
+
+            }
         }
     }
 }

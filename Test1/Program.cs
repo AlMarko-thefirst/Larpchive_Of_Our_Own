@@ -169,14 +169,30 @@ LanguageList LList = Languages.SelectAll();
 //    Console.WriteLine(c.WorkId);
 //}
 
-WorksDB wdb = new();
-WorksList wList = wdb.SelectAll();
-foreach (var w in wList)
+//WorksDB wdb = new();
+//WorksList wList = wdb.SelectAll();
+//foreach (var w in wList)
+//{
+//    Console.WriteLine(w.WorkName);
+//}
+//Works toupdate = wList[0];
+//toupdate.WorkName = "Sourdough Starters and Second Chances";
+//wdb.Update(toupdate);
+//int x = wdb.SaveChanges();
+//Console.WriteLine($"{x} rows were updated");
+
+Tags_On_WorksDB towdb = new();
+Tags_On_WorksList towList = towdb.SelectAll();
+foreach (var tow in towList)
 {
-    Console.WriteLine(w.WorkName);
+    Console.WriteLine(tow.WorkTags.Tagname);
 }
-Works toupdate = wList[0];
-toupdate.WorkName += "21";
-wdb.Update(toupdate);
-int x = wdb.SaveChanges();
+Tags_On_Works toupdate = towList[0];
+toupdate.WorkTags = Tlist[10];
+towdb.Update(toupdate);
+int x = towdb.SaveChanges();
 Console.WriteLine($"{x} rows were updated");
+foreach (var tow in towList)
+{
+    Console.WriteLine(tow.WorkTags.Tagname);
+}

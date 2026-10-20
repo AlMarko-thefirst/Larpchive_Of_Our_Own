@@ -60,18 +60,24 @@ namespace ViewModel
             Works w = entity as Works;
             if (w != null)
             {
-                string sqlStr = "UPDATE Works SET WorkName=@wName, description=@wDes, ChapterGoal=@wCG, Language=@wLang, Author=@wAuth, DateOfRelease=@wDOR, Privacy=@wPri, AgeRating=@wAg  WHERE ID=@ID";
+                string sqlStr = "UPDATE Works SET WorkName=@wName, description=@wDes, " +
+                    "ChapterGoal=@wCG, [Language]=@wLang, Author=@wAuth, DateOfRelease=@wDOR, " +
+                    "Privacy=@wPri, AgeRating=@wAg  WHERE ID=@ID";
 
                 command.CommandText = sqlStr;
+
                 command.Parameters.Add(new OleDbParameter("@wName", w.WorkName));
                 command.Parameters.Add(new OleDbParameter("@wDes", w.Description));
                 command.Parameters.Add(new OleDbParameter("@wCG", w.ChapterGoal));
                 command.Parameters.Add(new OleDbParameter("@wLang", w.Language.Id));
                 command.Parameters.Add(new OleDbParameter("@wAuth", w.Author.Id));
-                command.Parameters.Add(new OleDbParameter("@wDOR", w.DateOfRelease));
+                OleDbParameter dateParam = new OleDbParameter("@wDOR", OleDbType.Date);
+                dateParam.Value = w.DateOfRelease;
+                command.Parameters.Add(dateParam);
                 command.Parameters.Add(new OleDbParameter("@wPri", w.Privacy.Id));
                 command.Parameters.Add(new OleDbParameter("@wAg", w.AgeRating.Id));
                 command.Parameters.Add(new OleDbParameter("@ID", w.Id));
+
             }
         }
     }
