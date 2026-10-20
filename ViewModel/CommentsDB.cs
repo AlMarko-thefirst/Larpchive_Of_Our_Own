@@ -63,7 +63,9 @@ namespace ViewModel
                 command.Parameters.Add(new OleDbParameter("@cName", c.Comment));
                 command.Parameters.Add(new OleDbParameter("@cUid", c.UserId));
                 command.Parameters.Add(new OleDbParameter("@cWid", c.WorkId));
-                command.Parameters.Add(new OleDbParameter("@cDOC", c.DateOfComment));
+                OleDbParameter dateParam = new OleDbParameter("@cDOC", OleDbType.Date);
+                dateParam.Value = c.DateOfComment;
+                command.Parameters.Add(dateParam);
                 command.Parameters.Add(new OleDbParameter("@cRate", c.Rating));
                 command.Parameters.Add(new OleDbParameter("@ID", c.Id));
             }

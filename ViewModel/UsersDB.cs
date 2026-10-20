@@ -59,7 +59,9 @@ namespace ViewModel
                 command.CommandText = sqlStr;
                 command.Parameters.Add(new OleDbParameter("@uMail", u.Email));
                 command.Parameters.Add(new OleDbParameter("@uName", u.Username));
-                command.Parameters.Add(new OleDbParameter("@uDate", u.DateOfCreation));
+                OleDbParameter dateParam = new OleDbParameter("@uDate", OleDbType.Date);
+                dateParam.Value = u.DateOfCreation;
+                command.Parameters.Add(dateParam);
                 command.Parameters.Add(new OleDbParameter("@ID", u.Id));
             }
         }

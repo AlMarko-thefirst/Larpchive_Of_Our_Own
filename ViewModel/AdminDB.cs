@@ -6,7 +6,7 @@ using System.Text;
 
 namespace ViewModel
 {
-    public class AdminDB: BaseDB
+    public class AdminDB: UsersDB
     {
         public AdminList SelectAll()
         {
@@ -47,6 +47,17 @@ namespace ViewModel
 
         }
 
+        public override void Update(BaseEntity entity)
+        {
+            Admin student = entity as Admin;
+            if (student != null)
+            {
+                updated.Add(new ChangeEntity(this.CreateUpdatedSQL, entity));
+                updated.Add(new ChangeEntity(base.CreateUpdatedSQL, entity));
+            }
+        }
+
+
         protected override void CreateInsertdSQL(BaseEntity entity, OleDbCommand cmd)
         {
             throw new NotImplementedException();
@@ -54,7 +65,13 @@ namespace ViewModel
 
         protected override void CreateUpdatedSQL(BaseEntity entity, OleDbCommand cmd)
         {
-            throw new NotImplementedException();
+            Admin a = entity as Admin;
+            if (a != null)
+            {
+                string sqlStr = $"Update Admin Where @ID=ID";
+                command.Parameters.Add(new OleDbParameter("@ID", a.Id));
+            }
+
         }
     }
 }
