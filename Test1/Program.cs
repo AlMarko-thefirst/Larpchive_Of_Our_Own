@@ -69,8 +69,8 @@ LanguageList LList = Languages.SelectAll();
 //{
 //    Console.WriteLine(t.Tagname);
 //}
-//Tags toupdate = tList[0];
-//tagstoupdate.Tagname = "Fluff";
+//Tags toupdate = tList[14];
+//toupdate.Tagname = "Magic";
 //tdb.Update(toupdate);
 //int x = tdb.SaveChanges();
 //Console.WriteLine($"{x} rows were updated");
@@ -180,19 +180,45 @@ LanguageList LList = Languages.SelectAll();
 //wdb.Update(toupdate);
 //int x = wdb.SaveChanges();
 //Console.WriteLine($"{x} rows were updated");
+//Tags_On_WorksDB towdb = new();
+//Tags_On_WorksList towList = towdb.SelectAll();
+//foreach (var tow in towList)
+//{
+//    Console.WriteLine(tow.WorkTags.Tagname);
+//}
+//Tags_On_Works toupdate = towList[0];
+//toupdate.WorkTags = Tlist[10];
+//towdb.Update(toupdate);
+//int x = towdb.SaveChanges();
+//Console.WriteLine($"{x} rows were updated");
+//foreach (var tow in towList)
+//{
+//    Console.WriteLine(tow.WorkTags.Tagname);
+//}
 
-Tags_On_WorksDB towdb = new();
-Tags_On_WorksList towList = towdb.SelectAll();
-foreach (var tow in towList)
-{
-    Console.WriteLine(tow.WorkTags.Tagname);
-}
-Tags_On_Works toupdate = towList[0];
-toupdate.WorkTags = Tlist[10];
-towdb.Update(toupdate);
-int x = towdb.SaveChanges();
-Console.WriteLine($"{x} rows were updated");
-foreach (var tow in towList)
-{
-    Console.WriteLine(tow.WorkTags.Tagname);
-}
+//AdminDB adb = new();
+//AdminList aList = adb.SelectAll();
+//foreach (var a in aList)
+//{
+//    Console.WriteLine(a.Username);
+//}
+//Admin toupdate = aList[0];
+//toupdate.Username = "Denomant";
+//adb.Update(toupdate);
+//int x = adb.SaveChanges();
+//Console.WriteLine($"{x} rows were updated");
+//foreach (var a in aList)
+//{
+//    Console.WriteLine(a.Username);
+//}
+
+//TagsDB tdb = new();
+//Tags myTag = new Tags() { Tagname = "magic" };
+//tdb.Insert(myTag);
+//int x = tdb.SaveChanges();
+//Console.WriteLine($"{x} rows inserted");
+
+AgeRatingDB adb = new();
+AgeRating myAR = new AgeRating() { Age_Rating = "Restricted" };
+adb.Insert(myAR);
+int x = adb.SaveChanges();

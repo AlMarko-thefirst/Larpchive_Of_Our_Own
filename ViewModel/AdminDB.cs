@@ -47,16 +47,6 @@ namespace ViewModel
 
         }
 
-        public override void Update(BaseEntity entity)
-        {
-            Admin student = entity as Admin;
-            if (student != null)
-            {
-                updated.Add(new ChangeEntity(this.CreateUpdatedSQL, entity));
-                updated.Add(new ChangeEntity(base.CreateUpdatedSQL, entity));
-            }
-        }
-
 
         protected override void CreateInsertdSQL(BaseEntity entity, OleDbCommand cmd)
         {
@@ -65,13 +55,22 @@ namespace ViewModel
 
         protected override void CreateUpdatedSQL(BaseEntity entity, OleDbCommand cmd)
         {
+            //Admin a = entity as Admin;
+            //if (a != null)
+            //{
+            //    string sqlStr = "UPDATE Admin  SET Where ID=@ID";
+            //    command.Parameters.Add(new OleDbParameter("@ID", a.Id));
+            //}
+        }
+        public override void Update(BaseEntity entity)
+        {
             Admin a = entity as Admin;
             if (a != null)
             {
-                string sqlStr = $"Update Admin Where @ID=ID";
-                command.Parameters.Add(new OleDbParameter("@ID", a.Id));
+                updated.Add(new ChangeEntity(this.CreateUpdatedSQL, entity));
+                updated.Add(new ChangeEntity(base.CreateUpdatedSQL, entity));
             }
-
         }
+
     }
 }

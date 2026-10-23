@@ -46,7 +46,14 @@ namespace ViewModel
 
         protected override void CreateInsertdSQL(BaseEntity entity, OleDbCommand cmd)
         {
-            throw new NotImplementedException();
+            Tags t = entity as Tags;
+            if (t != null)
+            {
+                string sqlStr = $"Insert INTO Tags (tagname) VALUES (@tName)";
+                
+                command.CommandText = sqlStr;
+                command.Parameters.Add(new OleDbParameter("@tName", t.Tagname));
+            }
         }
 
         protected override void CreateUpdatedSQL(BaseEntity entity, OleDbCommand cmd)

@@ -43,7 +43,14 @@ namespace ViewModel
 
         protected override void CreateInsertdSQL(BaseEntity entity, OleDbCommand cmd)
         {
-            throw new NotImplementedException();
+            AgeRating a = entity as AgeRating;
+            if (a != null)
+            {
+                string sqlStr = $"Insert INTO AgeRating (AgeRating) VALUES (@aRating)";
+
+                command.CommandText = sqlStr;
+                command.Parameters.Add(new OleDbParameter("@aRating", a.Age_Rating));
+            }
         }
 
         protected override void CreateUpdatedSQL(BaseEntity entity, OleDbCommand cmd)
