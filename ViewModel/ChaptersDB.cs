@@ -49,7 +49,19 @@ namespace ViewModel
 
         protected override void CreateInsertdSQL(BaseEntity entity, OleDbCommand cmd)
         {
-            throw new NotImplementedException();
+            Chapters c = entity as Chapters;
+            if (c != null)
+            {
+                string sqlStr = $"Insert INTO Chapters (ChapterName,WorkID,ChapterNum,Summary,Notes,Story) VALUES (@cName,@cWid,@cCnum,@cSum,@cNote,@cStory)";
+
+                command.CommandText = sqlStr;
+                command.Parameters.Add(new OleDbParameter("@cName", c.ChapterName));
+                command.Parameters.Add(new OleDbParameter("@cWid", c.WorkID));
+                command.Parameters.Add(new OleDbParameter("@cCnum", c.ChapterNum));
+                command.Parameters.Add(new OleDbParameter("@cSum", c.Summary));
+                command.Parameters.Add(new OleDbParameter("@cNote", c.Notes));
+                command.Parameters.Add(new OleDbParameter("@cStory", c.Story));
+            }
         }
 
         protected override void CreateUpdatedSQL(BaseEntity entity, OleDbCommand cmd)

@@ -52,7 +52,24 @@ namespace ViewModel
 
         protected override void CreateInsertdSQL(BaseEntity entity, OleDbCommand cmd)
         {
-            throw new NotImplementedException();
+            Works w = entity as Works;
+            if (w != null)
+            {
+                string sqlStr = $"Insert INTO Works (WorkName,description,ChapterGoal,[Language],Author,DateOfRelease,Privacy,AgeRating) " +
+                    $"VALUES (@wName,@wDes,@wCG,@wLang,@wAuth,@wDOR,@wPri,@wAg)";
+                command.CommandText = sqlStr;
+
+                command.Parameters.Add(new OleDbParameter("@wName", w.WorkName));
+                command.Parameters.Add(new OleDbParameter("@wDes", w.Description));
+                command.Parameters.Add(new OleDbParameter("@wCG", w.ChapterGoal));
+                command.Parameters.Add(new OleDbParameter("@wLang", w.Language.Id));
+                command.Parameters.Add(new OleDbParameter("@wAuth", w.Author.Id));
+                OleDbParameter dateParam = new OleDbParameter("@wDOR", OleDbType.Date);
+                dateParam.Value = w.DateOfRelease;
+                command.Parameters.Add(dateParam);
+                command.Parameters.Add(new OleDbParameter("@wPri", w.Privacy.Id));
+                command.Parameters.Add(new OleDbParameter("@wAg", w.AgeRating.Id));
+            }
         }
 
         protected override void CreateUpdatedSQL(BaseEntity entity, OleDbCommand cmd)

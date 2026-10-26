@@ -42,7 +42,14 @@ namespace ViewModel
 
         protected override void CreateInsertdSQL(BaseEntity entity, OleDbCommand cmd)
         {
-            throw new NotImplementedException();
+            Privacy p = entity as Privacy;
+            if (p != null)
+            {
+                string sqlStr = $"Insert INTO Privacy (PrivacyLevel) VALUES (@pName)";
+
+                command.CommandText = sqlStr;
+                command.Parameters.Add(new OleDbParameter("@pName", p.PrivacyLevel));
+            }
         }
 
         protected override void CreateUpdatedSQL(BaseEntity entity, OleDbCommand cmd)

@@ -46,7 +46,16 @@ namespace ViewModel
 
         protected override void CreateInsertdSQL(BaseEntity entity, OleDbCommand cmd)
         {
-            throw new NotImplementedException();
+            Languages l = entity as Languages;
+            if (l != null)
+            {
+                string sqlStr = $"Insert INTO Languages (LanguageNameInEnglish,LanguageNameInOriginalLangauge,LettersInAlpabetticalOrder) VALUES (@lNameie,@lNameiol,@lNamel)";
+
+                command.CommandText = sqlStr;
+                command.Parameters.Add(new OleDbParameter("@lNameie", l.LanguageNameInEnglish));
+                command.Parameters.Add(new OleDbParameter("@lNameiol", l.LanguageNameInOriginalLangauge));
+                command.Parameters.Add(new OleDbParameter("@lNamel", l.LettersInAlpabetticalOrder));
+            }
         }
 
         protected override void CreateUpdatedSQL(BaseEntity entity, OleDbCommand cmd)

@@ -49,7 +49,21 @@ namespace ViewModel
 
         protected override void CreateInsertdSQL(BaseEntity entity, OleDbCommand cmd)
         {
-            throw new NotImplementedException();
+            Comments c = entity as Comments;
+            if (c != null)
+            {
+                string sqlStr = $"Insert INTO Comments (Comment,UserID,WorkID,DateOfComment,rating) VALUES (@cName,@cUid,@cWid,@cDOC,@cRate)";
+
+                command.CommandText = sqlStr;
+                command.CommandText = sqlStr;
+                command.Parameters.Add(new OleDbParameter("@cName", c.Comment));
+                command.Parameters.Add(new OleDbParameter("@cUid", c.UserId));
+                command.Parameters.Add(new OleDbParameter("@cWid", c.WorkId));
+                OleDbParameter dateParam = new OleDbParameter("@cDOC", OleDbType.Date);
+                dateParam.Value = c.DateOfComment;
+                command.Parameters.Add(dateParam);
+                command.Parameters.Add(new OleDbParameter("@cRate", c.Rating));
+            }
         }
 
         protected override void CreateUpdatedSQL(BaseEntity entity, OleDbCommand cmd)
