@@ -45,7 +45,16 @@ namespace ViewModel
 
         protected override void CreateInsertdSQL(BaseEntity entity, OleDbCommand cmd)
         {
-            throw new NotImplementedException();
+            Tags_On_Works tow = entity as Tags_On_Works;
+            if (tow != null)
+            {
+                string sqlStr = $"Insert INTO Tags_On_Works ([Work_Id],[Tags]) " +
+                    $"VALUES (@towWid,@towT)";
+                command.CommandText = sqlStr;
+
+                command.Parameters.Add(new OleDbParameter("@towWid", tow.WorkId.Id));
+                command.Parameters.Add(new OleDbParameter("@towT", tow.WorkTags.Id));
+            }
         }
 
         protected override void CreateUpdatedSQL(BaseEntity entity, OleDbCommand cmd)

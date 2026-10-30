@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.OleDb;
+using System.Data.SqlTypes;
 using System.Text;
 
 namespace ViewModel
@@ -46,21 +47,36 @@ namespace ViewModel
             return g;
 
         }
-
+        public override void Insert(BaseEntity entity)
+        {
+            BaseEntity reqEntity = this.NewEntity();
+            if (entity != null & entity.GetType() == reqEntity.GetType())
+            {
+                inserted.Add(new ChangeEntity(base.CreateInsertdSQL, entity));
+                inserted.Add(new ChangeEntity(this.CreateInsertdSQL, entity));
+            }
+        }
 
         protected override void CreateInsertdSQL(BaseEntity entity, OleDbCommand cmd)
         {
-            throw new NotImplementedException();
+            Admin a = entity as Admin;
+            if (a != null)
+            {
+                string sqlStr = $"Insert INTO Admin (ID) VALUES(@ID)";
+
+                command.CommandText = sqlStr;
+                command.Parameters.Add(new OleDbParameter("@ID", a.Id));
+            }
         }
 
         protected override void CreateUpdatedSQL(BaseEntity entity, OleDbCommand cmd)
         {
-            //Admin a = entity as Admin;
-            //if (a != null)
-            //{
-            //    string sqlStr = "UPDATE Admin  SET Where ID=@ID";
-            //    command.Parameters.Add(new OleDbParameter("@ID", a.Id));
-            //}
+            Admin a = entity as Admin;
+            if (a != null)
+            {
+                string sqlStr = "UPDATE Admin  SET Where ID=@ID";
+                command.Parameters.Add(new OleDbParameter("@ID", a.Id));
+            }
         }
         public override void Update(BaseEntity entity)
         {

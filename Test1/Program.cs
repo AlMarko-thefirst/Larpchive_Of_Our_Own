@@ -284,3 +284,23 @@ AdminList aList = adb.SelectAll();
 //{
 //    Console.WriteLine($"{w.Id}: {w.WorkName}, {w.Description}, {w.ChapterGoal}, {w.Language}, {w.Author}, {w.DateOfRelease}, {w.Privacy}, {w.AgeRating}");
 //}
+
+//Tags_On_WorksDB pdb = new();
+//Tags_On_Works myAR = new Tags_On_Works() { WorkId = wList[10], WorkTags = Tlist[2] };
+//pdb.Insert(myAR);
+//int x = pdb.SaveChanges();
+//Console.WriteLine($"{x} rows inserted");
+//foreach (var tow in towList)
+//{
+//    Console.WriteLine($"{tow.Id}: {tow.WorkId.Id}, {tow.WorkTags.Tagname}");
+//}
+
+//AdminDB pdb = new();
+//Admin myAR = new Admin() { Id = 13, Email = "RandomKid@gmail.com", Username = "Sunna", DateOfCreation = new DateTime(2018,12,05), IsVerified = true };
+//pdb.Insert(myAR);
+//int x = pdb.SaveChanges();
+//Console.WriteLine($"{x} rows inserted");
+foreach (var a in aList)
+{
+    Console.WriteLine($"{a.Id}: {a.Email}, {a.Username}, {a.DateOfCreation}, {a.IsVerified}");
+}
