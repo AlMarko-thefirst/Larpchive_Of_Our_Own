@@ -2,18 +2,25 @@
 using Larpchive_Of_Our_Own;
 TagsDB tags = new TagsDB();
 TagList Tlist = tags.SelectAll();
+TagsDB tdb = new TagsDB();
 AgeRatingDB agerating = new AgeRatingDB();
 AgeRatingList AList = agerating.SelectAll();
+AgeRatingDB ardb = new AgeRatingDB();
 PrivacyDB privacy = new PrivacyDB();
 PrivacyList PList = privacy.SelectAll();
+PrivacyDB pdb = new PrivacyDB();
 ChaptersDB chapters = new ChaptersDB();
 ChapterList CList = chapters.SelectAll();
+ChaptersDB chdb = new ChaptersDB();
 UsersDB Users = new UsersDB();
 UserList UList = Users.SelectAll();
+UsersDB udb = new UsersDB();
 CommentsDB Comments = new CommentsDB();
 CommentList CommentList = Comments.SelectAll();
+CommentsDB cdb = new CommentsDB();
 LanguagesDB Languages = new LanguagesDB();
 LanguageList LList = Languages.SelectAll();
+LanguagesDB ldb = new LanguagesDB();
 //#region
 WorksDB wdb = new();
 WorksList wList = wdb.SelectAll();
@@ -300,7 +307,13 @@ AdminList aList = adb.SelectAll();
 //pdb.Insert(myAR);
 //int x = pdb.SaveChanges();
 //Console.WriteLine($"{x} rows inserted");
-foreach (var a in aList)
-{
-    Console.WriteLine($"{a.Id}: {a.Email}, {a.Username}, {a.DateOfCreation}, {a.IsVerified}");
-}
+//foreach (var a in aList)
+//{
+//    Console.WriteLine($"{a.Id}: {a.Email}, {a.Username}, {a.DateOfCreation}, {a.IsVerified}");
+//}
+
+Console.WriteLine($"======Delete======");
+Tags TagsDelete = Tlist.Last();
+tdb.Delete( TagsDelete );
+int x = tdb.SaveChanges();
+Console.WriteLine($"{x} rows were deleted");
