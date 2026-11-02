@@ -29,7 +29,14 @@ namespace ViewModel
 
         protected override void CreateDeletedSQL(BaseEntity entity, OleDbCommand cmd)
         {
-            throw new NotImplementedException();
+            Tags_On_Works tow = entity as Tags_On_Works;
+            if (tow != null)
+            {
+                string sqlStr = $"DELETE FROM Tags_On_Works where ID=@ID";
+
+                command.CommandText = sqlStr;
+                command.Parameters.Add(new OleDbParameter("@ID", tow.Id));
+            }
         }
 
         static private Tags_On_WorksList list = new Tags_On_WorksList();

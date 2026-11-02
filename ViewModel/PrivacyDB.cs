@@ -37,7 +37,14 @@ namespace ViewModel
         }
         protected override void CreateDeletedSQL(BaseEntity entity, OleDbCommand cmd)
         {
-            throw new NotImplementedException();
+            Privacy p = entity as Privacy;
+            if (p != null)
+            {
+                string sqlStr = $"DELETE FROM Privacy where ID=@ID";
+
+                command.CommandText = sqlStr;
+                command.Parameters.Add(new OleDbParameter("@ID", p.Id));
+            }
         }
 
         protected override void CreateInsertdSQL(BaseEntity entity, OleDbCommand cmd)

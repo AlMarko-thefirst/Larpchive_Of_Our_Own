@@ -38,7 +38,14 @@ namespace ViewModel
         }
         protected override void CreateDeletedSQL(BaseEntity entity, OleDbCommand cmd)
         {
-            throw new NotImplementedException();
+            AgeRating ar = entity as AgeRating;
+            if (ar != null)
+            {
+                string sqlStr = $"DELETE FROM AgeRating where ID=@ID";
+
+                command.CommandText = sqlStr;
+                command.Parameters.Add(new OleDbParameter("@ID", ar.Id));
+            }
         }
         protected override void CreateInsertdSQL(BaseEntity entity, OleDbCommand cmd)
         {

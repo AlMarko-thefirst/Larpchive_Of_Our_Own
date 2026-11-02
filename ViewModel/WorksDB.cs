@@ -36,7 +36,14 @@ namespace ViewModel
 
         protected override void CreateDeletedSQL(BaseEntity entity, OleDbCommand cmd)
         {
-            throw new NotImplementedException();
+            Works  w = entity as Works;
+            if (w != null)
+            {
+                string sqlStr = $"DELETE FROM Works where ID=@ID";
+
+                command.CommandText = sqlStr;
+                command.Parameters.Add(new OleDbParameter("@ID", w.Id));
+            }
         }
 
         static private WorksList list=new WorksList();

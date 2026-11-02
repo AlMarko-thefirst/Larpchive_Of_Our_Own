@@ -34,7 +34,24 @@ namespace ViewModel
 
         protected override void CreateDeletedSQL(BaseEntity entity, OleDbCommand cmd)
         {
-            throw new NotImplementedException();
+            Admin a = entity as Admin;
+            if (a != null)
+            {
+                string sqlStr = $"DELETE FROM Admin where ID=@ID";
+
+                command.CommandText = sqlStr;
+                command.Parameters.Add(new OleDbParameter("@ID", a.Id));
+            }
+        }
+
+        public override void Delete(BaseEntity entity)
+        {
+            BaseEntity reqEntity = this.NewEntity();
+            if (entity != null & entity.GetType() == reqEntity.GetType())
+            {
+                deleted.Add(new ChangeEntity(this.CreateDeletedSQL, entity));
+                deleted.Add(new ChangeEntity(this.CreateDeletedSQL, entity));
+            }
         }
 
         static private AdminList list = new AdminList();

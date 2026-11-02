@@ -312,8 +312,62 @@ AdminList aList = adb.SelectAll();
 //    Console.WriteLine($"{a.Id}: {a.Email}, {a.Username}, {a.DateOfCreation}, {a.IsVerified}");
 //}
 
-Console.WriteLine($"======Delete======");
-Tags TagsDelete = Tlist.Last();
-tdb.Delete( TagsDelete );
-int x = tdb.SaveChanges();
-Console.WriteLine($"{x} rows were deleted");
+//Console.WriteLine($"======Delete======");
+//Tags Deletevar = Tlist.Last();
+//tdb.Delete( Deletevar );
+//int x = tdb.SaveChanges();
+//Console.WriteLine($"{x} rows were deleted");
+
+//Console.WriteLine($"======Delete======");
+//AgeRating Deletevar = AList.Last();
+//ardb.Delete(Deletevar);
+//int x = ardb.SaveChanges();
+//Console.WriteLine($"{x} rows were deleted");
+
+//Console.WriteLine($"======Delete======");
+//Privacy Deletevar = PList.Last();
+//pdb.Delete(Deletevar);
+//int x = pdb.SaveChanges();
+//Console.WriteLine($"{x} rows were deleted");
+
+//Console.WriteLine($"======Delete======");
+//Languages Deletevar = LList.Last();
+//ldb.Delete(Deletevar);
+//int x = ldb.SaveChanges();
+//Console.WriteLine($"{x} rows were deleted");
+
+//Console.WriteLine($"======Delete======");
+//Comments Deletevar = CommentList.Last();
+//cdb.Delete(Deletevar);
+//int x = cdb.SaveChanges();
+//Console.WriteLine($"{x} rows were deleted");
+
+//Console.WriteLine($"======Delete======");
+//Chapters Deletevar = CList.Last();
+//chdb.Delete(Deletevar);
+//int x = chdb.SaveChanges();
+//Console.WriteLine($"{x} rows were deleted");
+
+//Console.WriteLine($"======Delete======");
+//Works Deletevar = wList.Last();
+//wdb.Delete(Deletevar);
+//int x = wdb.SaveChanges();
+//Console.WriteLine($"{x} rows were deleted");
+
+//Console.WriteLine($"======Delete======");
+//Tags_On_Works Deletevar = towList.Last();
+//towdb.Delete(Deletevar);
+//int x = towdb.SaveChanges();
+//Console.WriteLine($"{x} rows were deleted");
+
+//Console.WriteLine($"======Delete======");
+//Users Deletevar = UList.Last();
+//udb.Delete(Deletevar);
+//int x = udb.SaveChanges();
+//Console.WriteLine($"{x} rows were deleted");
+
+//Console.WriteLine($"======Delete======");
+//Admin Deletevar = aList.Last();
+//adb.Delete(Deletevar);
+//int x = adb.SaveChanges();
+//Console.WriteLine($"{x} rows were deleted");
