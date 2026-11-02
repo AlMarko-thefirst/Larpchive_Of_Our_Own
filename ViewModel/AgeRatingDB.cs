@@ -40,7 +40,6 @@ namespace ViewModel
         {
             throw new NotImplementedException();
         }
-
         protected override void CreateInsertdSQL(BaseEntity entity, OleDbCommand cmd)
         {
             AgeRating a = entity as AgeRating;
