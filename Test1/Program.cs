@@ -42,10 +42,6 @@ AdminList aList = adb.SelectAll();
 //    Console.WriteLine($"{w.Id}: {w.WorkId.WorkName}, {w.WorkTags.Tagname}");
 //}
 //#endregion
-//foreach (Tags t in Tlist)
-//{
-//    Console.WriteLine($"{t.Id}:{t.Tagname}");
-//}
 //foreach (AgeRating a in AList)
 //{
 //    Console.WriteLine($"{a.Id}:{a.Age_Rating}");
@@ -218,12 +214,6 @@ AdminList aList = adb.SelectAll();
 //{
 //    Console.WriteLine(a.Username);
 //}
-
-//TagsDB tdb = new();
-//Tags myTag = new Tags() { Tagname = "magic" };
-//tdb.Insert(myTag);
-//int x = tdb.SaveChanges();
-//Console.WriteLine($"{x} rows inserted");
 
 //AgeRatingDB adb = new();
 //AgeRating myAR = new AgeRating() { Age_Rating = "Restricted" };
