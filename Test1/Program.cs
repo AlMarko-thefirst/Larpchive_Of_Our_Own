@@ -350,252 +350,164 @@ using Larpchive_Of_Our_Own;
 //}
 //#endregion
 
-#region 
-Console.WriteLine($"======Select======");
-WorksDB w = new();
-WorksList Wlist = w.SelectAll();
-WorksDB wdb = new WorksDB();
-foreach (Works W in Wlist)
-{
-    Console.WriteLine($"{W.WorkName}");
-}
-Task.Delay(2000).Wait();
-
-Console.WriteLine($"======Insert======");
-LanguagesDB l = new LanguagesDB();  
-LanguageList LList = l.SelectAll();
-UsersDB u = new UsersDB();
-UserList UList = u.SelectAll();
-PrivacyDB p = new PrivacyDB();
-PrivacyList PList = p.SelectAll();
-AgeRatingDB ar = new AgeRatingDB();
-AgeRatingList ARList = ar.SelectAll();
-
-Works myW = new Works() { WorkName = "slimki", Description = "shlomki is an edghoge", ChapterGoal = "69", Language = LList[2], Author = UList[5], DateOfRelease = new DateTime(2007, 3, 5), Privacy = PList[0], AgeRating = ARList[2] };
-w.Insert(myW);
-int x = w.SaveChanges();
-Console.WriteLine($"{x} rows inserted");
-
-Wlist = w.SelectAll();
-Console.WriteLine($"{Wlist.Max(x => x.Id).WorkName}");
-
-Task.Delay(2000).Wait();
-
-Console.WriteLine($"======Update======");
-WorksList wList = wdb.SelectAll();
-Works toupdate = wList.Last();
-toupdate.WorkName = "Slomki";
-wdb.Update(toupdate);
-int y = wdb.SaveChanges();
-Console.WriteLine($"{y} rows were updated");
-
-
-wList = w.SelectAll();
-Console.WriteLine($"{wList.Last().WorkName}");
-
-Task.Delay(2000).Wait();
-
-Console.WriteLine($"======Delete======");
-Works Deletevar = wList.Last();
-wdb.Delete(Deletevar);
-int z = wdb.SaveChanges();
-Console.WriteLine($"{z} rows were deleted");
-
-wList = w.SelectAll();
-foreach (var W in wList)
-{
-    Console.WriteLine($"{W.WorkName}");
-}
-#endregion
-
-//#region
-//#endregion
-//#region
-//Tags_On_WorksDB towdb = new();
-//Tags_On_WorksList towList = towdb.SelectAll();
-//foreach (Tags_On_Works w in towList)
+//#region 
+//Console.WriteLine($"======Select======");
+//WorksDB w = new();
+//WorksList Wlist = w.SelectAll();
+//WorksDB wdb = new WorksDB();
+//foreach (Works W in Wlist)
 //{
-//#endregion
-//#region
-//AdminDB adb = new();
-//AdminList aList = adb.SelectAll();
-//foreach (Admin a in wList)
-//    Console.WriteLine($"{a.Id}, {a.Email}, {a.Username}, {a.DateOfCreation}, {a.IsVerified}");
-//#endregion
-//    Console.WriteLine($"{w.Id}: {w.WorkId.WorkName}, {w.WorkTags.Tagname}");
+//    Console.WriteLine($"{W.WorkName}");
 //}
-//#endregion
+//Task.Delay(2000).Wait();
 
-//foreach (Chapters c in CList)
-//{
-//    Console.WriteLine($"{c.WorkID}: {c.ChapterNum}, {c.ChapterName}, {c.Summary}, {c.Notes}, {c.Story}");
-//}
-//foreach (Users u in UList)
-//{
-//    Console.WriteLine($"{u.Id}, {u.Email}, {u.Username}, {u.DateOfCreation}, {u.IsVerified}");
-//}
-//foreach (var c in CommentList)
-//{
-//    Console.WriteLine($"{c.WorkId}: {c.UserId}, {c.DateOfComment}, {c.Rating}, {c.Comment}");
-//}
-//foreach (var l in LList)
-//{
-//    Console.WriteLine($"{l.Id}: {l.LanguageNameInEnglish}, {l.LanguageNameInOriginalLangauge}, {l.LettersInAlpabetticalOrder}");
-//}
+//Console.WriteLine($"======Insert======");
+//LanguagesDB l = new LanguagesDB();  
+//LanguageList LList = l.SelectAll();
+//UsersDB u = new UsersDB();
+//UserList UList = u.SelectAll();
+//PrivacyDB p = new PrivacyDB();
+//PrivacyList PList = p.SelectAll();
+//AgeRatingDB ar = new AgeRatingDB();
+//AgeRatingList ARList = ar.SelectAll();
 
-//LanguagesDB ldb = new();
-//LanguageList lList = ldb.SelectAll();
-//foreach (var l in lList)
-//{
-//    Console.WriteLine(l.LanguageNameInOriginalLangauge);
-//}
-//Languages toupdate = lList[0];
-//tagstoupdate.LanguageNameInOriginalLangauge = "Slavic";
-//ldb.Update(toupdate);
-//int x = ldb.SaveChanges();
-//Console.WriteLine($"{x} rows were updated");
-//foreach (var l in lList)
-//{
-//    Console.WriteLine(l.LanguageNameInOriginalLangauge);
-//}
-//UsersDB udb = new();
-//UserList uList = udb.SelectAll();
-//foreach (var u in uList)
-//{
-//    Console.WriteLine(u.Username);
-//}
-//Users toupdate = uList[0];
-//toupdate.Username = "Sheldov";
-//udb.Update(toupdate);
-//int x = udb.SaveChanges();
-//Console.WriteLine($"{x} rows were updated");
-//foreach (var u in uList)
-//{
-//    Console.WriteLine(u.Username);
-//}
-//WorksDB wdb = new();
+//Works myW = new Works() { WorkName = "slimki", Description = "shlomki is an edghoge", ChapterGoal = "69", Language = LList[2], Author = UList[5], DateOfRelease = new DateTime(2007, 3, 5), Privacy = PList[0], AgeRating = ARList[2] };
+//w.Insert(myW);
+//int x = w.SaveChanges();
+//Console.WriteLine($"{x} rows inserted");
+
+//Wlist = w.SelectAll();
+//Console.WriteLine($"{Wlist.MaxBy(x => x.Id).WorkName}");
+
+//Task.Delay(2000).Wait();
+
+//Console.WriteLine($"======Update======");
 //WorksList wList = wdb.SelectAll();
-//foreach (var w in wList)
-//{
-//    Console.WriteLine(w.WorkName);
-//}
-//Works toupdate = wList[0];
-//toupdate.WorkName = "Sourdough Starters and Second Chances";
+//Works toupdate = wList.MaxBy(x => x.Id);
+//toupdate.WorkName = "Slomki";
 //wdb.Update(toupdate);
-//int x = wdb.SaveChanges();
-//Console.WriteLine($"{x} rows were updated");
-//Tags_On_WorksDB towdb = new();
-//Tags_On_WorksList towList = towdb.SelectAll();
-//foreach (var tow in towList)
-//{
-//    Console.WriteLine(tow.WorkTags.Tagname);
-//}
-//Tags_On_Works toupdate = towList[0];
-//toupdate.WorkTags = Tlist[10];
-//towdb.Update(toupdate);
-//int x = towdb.SaveChanges();
-//Console.WriteLine($"{x} rows were updated");
-//foreach (var tow in towList)
-//{
-//    Console.WriteLine(tow.WorkTags.Tagname);
-//}
-
-//AdminDB adb = new();
-//AdminList aList = adb.SelectAll();]
-//foreach (var a in aList)
-//{
-//    Console.WriteLine(a.Username);
-//}
-//Admin toupdate = aList[0];
-//toupdate.Username = "Denomant";
-//adb.Update(toupdate);
-//int x = adb.SaveChanges();
-//Console.WriteLine($"{x} rows were updated");
-//foreach (var a in aList)
-//{
-//    Console.WriteLine(a.Username);
-//}
-
-//UsersDB udb = new();
-//Users myAR = new Users() { Email = "MikeHawk@gmail.com", Username = "Mike", DateOfCreation = new DateTime(23 / 2 / 2024) };
-//udb.Insert(myAR);
-//int x = udb.SaveChanges();
-//Console.WriteLine($"{x} rows inserted");
-//foreach (var u in UList)
-//{
-//    Console.WriteLine($"{u.Id}: {u.Email}, {u.Username}, {u.DateOfCreation}");
-//}
+//int y = wdb.SaveChanges();
+//Console.WriteLine($"{y} rows were updated");
 
 
-//WorksDB pdb = new();
-//Works myAR = new Works() { WorkName="slimki", Description="shlomki is an edghoge", ChapterGoal="69",Language = LList[2], Author = UList[5], DateOfRelease = new DateTime(2007,3,5), Privacy = PList[0], AgeRating = AList[2],  };
-//pdb.Insert(myAR);
-//int x = pdb.SaveChanges();
-//Console.WriteLine($"{x} rows inserted");
-//foreach (var w in wList)
-//{
-//    Console.WriteLine($"{w.Id}: {w.WorkName}, {w.Description}, {w.ChapterGoal}, {w.Language}, {w.Author}, {w.DateOfRelease}, {w.Privacy}, {w.AgeRating}");
-//}
+//wList = w.SelectAll();
+//Console.WriteLine($"{wList.MaxBy(x => x.Id).WorkName}");
 
-//Tags_On_WorksDB pdb = new();
-//Tags_On_Works myAR = new Tags_On_Works() { WorkId = wList[10], WorkTags = Tlist[2] };
-//pdb.Insert(myAR);
-//int x = pdb.SaveChanges();
-//Console.WriteLine($"{x} rows inserted");
-//foreach (var tow in towList)
-//{
-//    Console.WriteLine($"{tow.Id}: {tow.WorkId.Id}, {tow.WorkTags.Tagname}");
-//}
-
-//AdminDB pdb = new();
-//Admin myAR = new Admin() { Id = 13, Email = "RandomKid@gmail.com", Username = "Sunna", DateOfCreation = new DateTime(2018,12,05), IsVerified = true };
-//pdb.Insert(myAR);
-//int x = pdb.SaveChanges();
-//Console.WriteLine($"{x} rows inserted");
-//foreach (var a in aList)
-//{
-//    Console.WriteLine($"{a.Id}: {a.Email}, {a.Username}, {a.DateOfCreation}, {a.IsVerified}");
-//}
-
+//Task.Delay(2000).Wait();
 
 //Console.WriteLine($"======Delete======");
-//Languages Deletevar = LList.Last();
-//ldb.Delete(Deletevar);
-//int x = ldb.SaveChanges();
-//Console.WriteLine($"{x} rows were deleted");
-
-//Console.WriteLine($"======Delete======");
-//Comments Deletevar = CommentList.Last();
-//cdb.Delete(Deletevar);
-//int x = cdb.SaveChanges();
-//Console.WriteLine($"{x} rows were deleted");
-
-//Console.WriteLine($"======Delete======");
-//Chapters Deletevar = CList.Last();
-//chdb.Delete(Deletevar);
-//int x = chdb.SaveChanges();
-//Console.WriteLine($"{x} rows were deleted");
-
-//Console.WriteLine($"======Delete======");
-//Works Deletevar = wList.Last();
+//Works Deletevar = wList.MaxBy(x => x.Id);
 //wdb.Delete(Deletevar);
-//int x = wdb.SaveChanges();
-//Console.WriteLine($"{x} rows were deleted");
+//int z = wdb.SaveChanges();
+//Console.WriteLine($"{z} rows were deleted");
+
+//wList = w.SelectAll();
+//foreach (var W in wList)
+//{
+//    Console.WriteLine($"{W.WorkName}");
+//}
+//#endregion
+
+//#region 
+//Console.WriteLine($"======Select======");
+//Tags_On_WorksDB tow = new();
+//Tags_On_WorksList TOWlist = tow.SelectAll();
+//Tags_On_WorksDB towdb = new Tags_On_WorksDB();
+//foreach (Tags_On_Works TOW in TOWlist)
+//{
+//    Console.WriteLine($"{TOW.WorkTags.Tagname}");
+//}
+//Task.Delay(2000).Wait();
+
+//Console.WriteLine($"======Insert======");
+//WorksDB w = new WorksDB();
+//WorksList WList = w.SelectAll();
+//TagsDB t = new TagsDB();
+//TagList TList = t.SelectAll();
+
+//Tags_On_Works myTOW = new Tags_On_Works() { WorkId = WList[4], WorkTags = TList[4] };
+//tow.Insert(myTOW);
+//int x = tow.SaveChanges();
+//Console.WriteLine($"{x} rows inserted");
+
+//TOWlist = tow.SelectAll();
+//Console.WriteLine($"{TOWlist.MaxBy(x => x.Id).WorkTags.Tagname}");
+
+//Task.Delay(2000).Wait();
+
+//Console.WriteLine($"======Update======");
+//Tags_On_WorksList towList = towdb.SelectAll();
+//Tags_On_Works toupdate = towList.MaxBy(x => x.Id);
+//toupdate.WorkTags = TList[5];
+//towdb.Update(toupdate);
+//int y = towdb.SaveChanges();
+//Console.WriteLine($"{y} rows were updated");
+
+
+//towList = tow.SelectAll();
+//Console.WriteLine($"{towList.MaxBy(x => x.Id).WorkTags.Tagname}");
+
+//Task.Delay(2000).Wait();
 
 //Console.WriteLine($"======Delete======");
-//Tags_On_Works Deletevar = towList.Last();
+//Tags_On_Works Deletevar = towList.MaxBy(x => x.Id);
 //towdb.Delete(Deletevar);
-//int x = towdb.SaveChanges();
-//Console.WriteLine($"{x} rows were deleted");
+//int z = towdb.SaveChanges();
+//Console.WriteLine($"{z} rows were deleted");
 
-//Console.WriteLine($"======Delete======");
-//Users Deletevar = UList.Last();
-//udb.Delete(Deletevar);
-//int x = udb.SaveChanges();
-//Console.WriteLine($"{x} rows were deleted");
+//towList = tow.SelectAll();
+//foreach (var TOW in towList)
+//{
+//    Console.WriteLine($"{TOW.WorkTags.Tagname}");
+//}
+//#endregion
 
-//Console.WriteLine($"======Delete======");
-//Admin Deletevar = aList.Last();
-//adb.Delete(Deletevar);
+//#region 
+//Console.WriteLine($"======Select======");
+//AdminDB a = new();
+//AdminList Alist = a.SelectAll();
+//AdminDB adb = new AdminDB();
+//foreach (Admin A in Alist)
+//{
+//    Console.WriteLine($"{A.Email}, {A.Username}, {A.DateOfCreation}, {A.IsVerified}");
+//}
+//Task.Delay(2000).Wait();
+
+//Console.WriteLine($"======Insert======");
+//Admin myAR = new Admin() { Id = 13, Email = "RandomKid@gmail.com", Username = "Sunna", DateOfCreation = new DateTime(2018, 12, 05), IsVerified = true };
+//adb.Insert(myAR);
 //int x = adb.SaveChanges();
-//Console.WriteLine($"{x} rows were deleted");
+//Console.WriteLine($"{x} rows inserted");
+
+//Alist = a.SelectAll();
+//Console.WriteLine($"{Alist.MaxBy(x => x.Id).Email}, {Alist.MaxBy(x => x.Id).Username}, {Alist.MaxBy(x => x.Id).DateOfCreation}, {Alist.MaxBy(x => x.Id).IsVerified}");
+
+//Task.Delay(2000).Wait();
+
+//Console.WriteLine($"======Update======");
+//AdminList aList = a.SelectAll();
+//Admin toupdate = aList.MaxBy(x => x.Id);
+//toupdate.Username = "Random kid";
+//adb.Update(toupdate);
+//int y = adb.SaveChanges();
+//Console.WriteLine($"{y} rows were updated");
+
+
+//aList = null; 
+//aList = a.SelectAll();
+//Console.WriteLine($"{aList.MaxBy(x => x.Id).Email}, {aList.MaxBy(x => x.Id).Username}, {aList.MaxBy(x => x.Id).DateOfCreation}, {aList.MaxBy(x => x.Id).IsVerified}");
+
+//Task.Delay(2000).Wait();
+
+//Console.WriteLine($"======Delete======");
+//Admin Deletevar = aList.MaxBy(x => x.Id);
+//adb.Delete(Deletevar);
+//int z = adb.SaveChanges();
+//Console.WriteLine($"{z} rows were deleted");
+
+//aList = a.SelectAll();
+//foreach (var A in aList)
+//{
+//    Console.WriteLine($"{A.Email}, {A.Username}, {A.DateOfCreation}, {A.IsVerified}");
+//}
+//#endregion
