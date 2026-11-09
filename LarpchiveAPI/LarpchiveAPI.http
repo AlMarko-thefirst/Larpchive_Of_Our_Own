@@ -1,0 +1,6 @@
+@LarpchiveAPI_HostAddress = http://localhost:5047
+
+GET {{LarpchiveAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
