@@ -1,4 +1,5 @@
 <Solution>
+  <Project Path="ApiInterface/ApiInterface.csproj" Id="7bd4fc60-544b-4140-95e2-559409ca6a22" />
   <Project Path="LarpchiveAPI/LarpchiveAPI.csproj" Id="2e0f3ecc-ab35-4b0b-9993-2ddc385c6a1d" />
   <Project Path="Larpchive_Of_Our_Own/Larpchive_Of_Our_Own.csproj" />
   <Project Path="Test1/Test.csproj" Id="688596b0-8b3c-4d68-90d9-a473daf44165" />

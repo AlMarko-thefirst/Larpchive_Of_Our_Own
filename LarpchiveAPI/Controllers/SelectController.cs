@@ -8,7 +8,7 @@ namespace LarpchiveAPI.Controllers
     [ApiController]
     public class SelectController : Controller
     {
-//                       =-=-=-=-=-=Select=-=-=-=-=-=
+        #region                       =-=-=-=-=-=Get=-=-=-=-=-=
         [HttpGet]
         public TagList SelectAllTags()
         {
@@ -79,8 +79,9 @@ namespace LarpchiveAPI.Controllers
             AdminList Admin = db.SelectAll();
             return Admin;
         }
-//                       =-=-=-=-=-=Insert=-=-=-=-=-=
-
+        #endregion
+        #region                      =-=-=-=-=-=Post=-=-=-=-=-=
+        [HttpPost]
         public int InsertATag([FromBody] Tags tags)
         {
             TagsDB db = new TagsDB();
@@ -168,7 +169,8 @@ namespace LarpchiveAPI.Controllers
             int x = db.SaveChanges();
             return x;
         }
-//                       =-=-=-=-=-=Update=-=-=-=-=-=
+        #endregion
+        #region                       =-=-=-=-=-=Put=-=-=-=-=-=
         [HttpPut]
         public int UpdateTags([FromBody] Tags x)
         {
@@ -257,7 +259,8 @@ namespace LarpchiveAPI.Controllers
             int y = db.SaveChanges();
             return y;
         }
-//                       =-=-=-=-=-=Delete=-=-=-=-=-=
+        #endregion
+        #region                       =-=-=-=-=-=Delete=-=-=-=-=-=
         [HttpDelete]
         public int DeleteTag([FromBody] Tags x)
         {
@@ -346,5 +349,6 @@ namespace LarpchiveAPI.Controllers
             int y = db.SaveChanges();
             return y;
         }
+        #endregion
     }
 }

@@ -4,3 +4,155 @@ GET {{LarpchiveAPI_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###
+
+GET {{LarpchiveAPI_HostAddress}}/api/select/SelectAllAdmin
+
+###
+
+GET {{LarpchiveAPI_HostAddress}}/api/select/SelectAllTags
+
+###
+
+GET {{LarpchiveAPI_HostAddress}}/api/select/SelectAllAgeRatings
+
+
+###
+
+GET {{LarpchiveAPI_HostAddress}}/api/select/SelectAllChapters
+
+###
+
+GET {{LarpchiveAPI_HostAddress}}/api/select/SelectAllComments
+
+###
+
+GET {{LarpchiveAPI_HostAddress}}/api/select/SelectAllLanguages
+
+###
+
+GET {{LarpchiveAPI_HostAddress}}/api/select/SelectAllPrivacy
+
+###
+
+GET {{LarpchiveAPI_HostAddress}}/api/select/SelectAllTags_On_Works
+
+###
+
+GET {{LarpchiveAPI_HostAddress}}/api/select/SelectAllUsers
+
+###
+
+GET {{LarpchiveAPI_HostAddress}}/api/Select/InsertATag
+
+###
+
+GET {{LarpchiveAPI_HostAddress}}/api/select/SelectAllTags
+
+###
+
+POST {{LarpchiveAPI_HostAddress}}/api/Select/InsertATag
+Content-Type: application/json
+
+{
+  //Tags
+}
+
+###
+
+POST {{LarpchiveAPI_HostAddress}}/api/select/InsertAUser
+Content-Type: application/json
+
+{
+  //Users
+}
+
+###
+
+POST {{LarpchiveAPI_HostAddress}}/api/select/InsertAWork
+Content-Type: application/json
+
+{
+  //Works
+}
+
+###
+
+POST {{LarpchiveAPI_HostAddress}}/api/select/InsertATag_On_Work
+Content-Type: application/json
+
+{
+  //Tags_On_Works
+}
+
+###
+
+POST {{LarpchiveAPI_HostAddress}}/api/select/InsertAnAgeRating
+Content-Type: application/json
+
+{
+  //AgeRating
+}
+
+###
+
+POST {{LarpchiveAPI_HostAddress}}/api/select/InsertAPrivacy
+Content-Type: application/json
+
+{
+  //Privacy
+}
+
+###
+
+POST {{LarpchiveAPI_HostAddress}}/api/select/InsertAnAdmin
+Content-Type: application/json
+
+{
+  //Admin
+}
+
+###
+
+POST {{LarpchiveAPI_HostAddress}}/api/select/InsertALanguage
+Content-Type: application/json
+
+{
+  //Languages
+}
+
+###
+
+POST {{LarpchiveAPI_HostAddress}}/api/select/InsertAComment
+Content-Type: application/json
+
+{
+  //Comments
+}
+
+###
+
+POST {{LarpchiveAPI_HostAddress}}/api/select/InsertAChapter
+Content-Type: application/json
+
+{
+  //Chapters
+}
+
+###
+
+PUT {{LarpchiveAPI_HostAddress}}/api/select/UpdateTags_On_Works
+Content-Type: application/json
+
+{
+  //Tags_On_Works
+}
+
+###
+
+DELETE {{LarpchiveAPI_HostAddress}}/api/Select/InsertATag
+
+###
+
+DELETE {{LarpchiveAPI_HostAddress}}/api/Select/InsertATag
+
+###
