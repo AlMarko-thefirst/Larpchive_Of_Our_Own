@@ -24,8 +24,8 @@ namespace ViewModel
         {
             Comments c = entity as Comments;
             c.Comment = reader["Comment"].ToString();
-            c.WorkId = int.Parse(reader["WorkID"].ToString());
-            c.UserId = int.Parse(reader["UserID"].ToString());
+            c.WorkId = WorksDB.SelectById(int.Parse(reader["WorkID"].ToString()));
+            c.UserId = UsersDB.SelectById(int.Parse(reader["UserID"].ToString()));
             c.DateOfComment = DateTime.Parse(reader["DateOfComment"].ToString());
             c.Rating = int.Parse(reader["rating"].ToString());
             base.CreateModel(entity);
@@ -64,8 +64,8 @@ namespace ViewModel
                 command.CommandText = sqlStr;
                 command.CommandText = sqlStr;
                 command.Parameters.Add(new OleDbParameter("@cName", c.Comment));
-                command.Parameters.Add(new OleDbParameter("@cUid", c.UserId));
-                command.Parameters.Add(new OleDbParameter("@cWid", c.WorkId));
+                command.Parameters.Add(new OleDbParameter("@cUid", c.UserId.Id));
+                command.Parameters.Add(new OleDbParameter("@cWid", c.WorkId.Id));
                 OleDbParameter dateParam = new OleDbParameter("@cDOC", OleDbType.Date);
                 dateParam.Value = c.DateOfComment;
                 command.Parameters.Add(dateParam);
@@ -82,8 +82,8 @@ namespace ViewModel
 
                 command.CommandText = sqlStr;
                 command.Parameters.Add(new OleDbParameter("@cName", c.Comment));
-                command.Parameters.Add(new OleDbParameter("@cUid", c.UserId));
-                command.Parameters.Add(new OleDbParameter("@cWid", c.WorkId));
+                command.Parameters.Add(new OleDbParameter("@cUid", c.UserId.Id));
+                command.Parameters.Add(new OleDbParameter("@cWid", c.WorkId.Id));
                 OleDbParameter dateParam = new OleDbParameter("@cDOC", OleDbType.Date);
                 dateParam.Value = c.DateOfComment;
                 command.Parameters.Add(dateParam);

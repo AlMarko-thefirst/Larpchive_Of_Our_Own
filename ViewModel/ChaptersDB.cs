@@ -23,7 +23,7 @@ namespace ViewModel
 
         {
             Chapters c = entity as Chapters;
-            c.WorkID = int.Parse(reader["WorkID"].ToString());
+            c.WorkID = WorksDB.SelectById(int.Parse(reader["WorkID"].ToString()));
             c.ChapterNum = int.Parse(reader["ChapterNum"].ToString());
             c.ChapterName = reader["ChapterName"].ToString();
             c.Summary = reader["Summary"].ToString();
@@ -63,7 +63,7 @@ namespace ViewModel
 
                 command.CommandText = sqlStr;
                 command.Parameters.Add(new OleDbParameter("@cName", c.ChapterName));
-                command.Parameters.Add(new OleDbParameter("@cWid", c.WorkID));
+                command.Parameters.Add(new OleDbParameter("@cWid", c.WorkID.Id));
                 command.Parameters.Add(new OleDbParameter("@cCnum", c.ChapterNum));
                 command.Parameters.Add(new OleDbParameter("@cSum", c.Summary));
                 command.Parameters.Add(new OleDbParameter("@cNote", c.Notes));
@@ -80,7 +80,7 @@ namespace ViewModel
 
                 command.CommandText = sqlStr;
                 command.Parameters.Add(new OleDbParameter("@cName", c.ChapterName));
-                command.Parameters.Add(new OleDbParameter("@cWid", c.WorkID));
+                command.Parameters.Add(new OleDbParameter("@cWid", c.WorkID.Id));
                 command.Parameters.Add(new OleDbParameter("@cCnum", c.ChapterNum));
                 command.Parameters.Add(new OleDbParameter("@cSum", c.Summary));
                 command.Parameters.Add(new OleDbParameter("@cNote", c.Notes));

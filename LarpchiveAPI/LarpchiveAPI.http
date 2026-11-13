@@ -156,3 +156,11 @@ DELETE {{LarpchiveAPI_HostAddress}}/api/Select/InsertATag
 DELETE {{LarpchiveAPI_HostAddress}}/api/Select/InsertATag
 
 ###
+
+GET {{LarpchiveAPI_HostAddress}}/api/select/SelectAllTags_On_Works
+
+###
+
+DELETE {{LarpchiveAPI_HostAddress}}/api/select/DeleteTag
+
+###

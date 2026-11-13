@@ -82,7 +82,7 @@ namespace LarpchiveAPI.Controllers
         #endregion
         #region                      =-=-=-=-=-=Post=-=-=-=-=-=
         [HttpPost]
-        public int InsertATag([FromBody] Tags tags)
+        public int InsertTag([FromBody] Tags tags)
         {
             TagsDB db = new TagsDB();
             db.Insert(tags);
@@ -90,7 +90,7 @@ namespace LarpchiveAPI.Controllers
             return x;
         }
         [HttpPost]
-        public int InsertAnAgeRating([FromBody] AgeRating ageRating)
+        public int InsertAgeRating([FromBody] AgeRating ageRating)
         {
             AgeRatingDB db = new AgeRatingDB();
             db.Insert(ageRating);
@@ -99,7 +99,7 @@ namespace LarpchiveAPI.Controllers
         }
 
         [HttpPost]
-        public int InsertAPrivacy([FromBody] Privacy privacy)
+        public int InsertPrivacy([FromBody] Privacy privacy)
         {
             PrivacyDB db = new PrivacyDB();
             db.Insert(privacy);
@@ -108,7 +108,7 @@ namespace LarpchiveAPI.Controllers
         }
 
         [HttpPost]
-        public int InsertALanguage([FromBody] Languages language)
+        public int InsertLanguage([FromBody] Languages language)
         {
             LanguagesDB db = new LanguagesDB();
             db.Insert(language);
@@ -117,7 +117,7 @@ namespace LarpchiveAPI.Controllers
         }
 
         [HttpPost]
-        public int InsertAChapter([FromBody] Chapters chapter)
+        public int InsertChapter([FromBody] Chapters chapter)
         {
             ChaptersDB db = new ChaptersDB();
             db.Insert(chapter);
@@ -126,7 +126,7 @@ namespace LarpchiveAPI.Controllers
         }
 
         [HttpPost]
-        public int InsertAComment([FromBody] Comments comment)
+        public int InsertComment([FromBody] Comments comment)
         {
             CommentsDB db = new CommentsDB();
             db.Insert(comment);
@@ -135,7 +135,7 @@ namespace LarpchiveAPI.Controllers
         }
 
         [HttpPost]
-        public int InsertAUser([FromBody] Users user)
+        public int InsertUser([FromBody] Users user)
         {
             UsersDB db = new UsersDB();
             db.Insert(user);
@@ -144,7 +144,7 @@ namespace LarpchiveAPI.Controllers
         }
 
         [HttpPost]
-        public int InsertAWork([FromBody] Works work)
+        public int InsertWork([FromBody] Works work)
         {
             WorksDB db = new WorksDB();
             db.Insert(work);
@@ -153,7 +153,7 @@ namespace LarpchiveAPI.Controllers
         }
 
         [HttpPost]
-        public int InsertATag_On_Work([FromBody] Tags_On_Works tagOnWork)
+        public int InsertTag_On_Work([FromBody] Tags_On_Works tagOnWork)
         {
             Tags_On_WorksDB db = new Tags_On_WorksDB();
             db.Insert(tagOnWork);
@@ -162,7 +162,7 @@ namespace LarpchiveAPI.Controllers
         }
 
         [HttpPost]
-        public int InsertAnAdmin([FromBody] Admin admin)
+        public int InsertAdmin([FromBody] Admin admin)
         {
             AdminDB db = new AdminDB();
             db.Insert(admin);
@@ -261,11 +261,11 @@ namespace LarpchiveAPI.Controllers
         }
         #endregion
         #region                       =-=-=-=-=-=Delete=-=-=-=-=-=
-        [HttpDelete]
-        public int DeleteTag([FromBody] Tags x)
+        [HttpDelete("{x}")]
+        public int DeleteTag(int x)
         {
             TagsDB db = new TagsDB();
-            db.Delete(x);
+            db.Delete(new Tags { Id = x });
             int y = db.SaveChanges();
             return y;
         }
